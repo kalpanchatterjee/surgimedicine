@@ -20,7 +20,7 @@ const ProductDetailPage = () => {
     useEffect(() => {
         if (id) {
             getProductById(id);
-            Axios.get("http://localhost:1400/product/getProducts/" + id).then(
+            Axios.get("54.89.60.0:5000/product/getProducts/" + id).then(
                 (res) => {
                     SetDetailProduct(res.data);
                 }

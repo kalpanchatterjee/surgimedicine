@@ -12,18 +12,16 @@ const MyAccountScreen = () => {
             phone: phone,
             password: password,
         };
-        Axios.post("http://localhost:1400/register", userDetails).then(
-            (res) => {
-                login();
-            }
-        );
+        Axios.post("54.89.60.0:5000/register", userDetails).then((res) => {
+            login();
+        });
     };
     function login() {
         let loginDetails = {
             email: username,
             password: password,
         };
-        Axios.post("http://localhost:1400/login", loginDetails).then((res) => {
+        Axios.post("54.89.60.0:5000/login", loginDetails).then((res) => {
             let result = res.data[0];
             router.push({
                 pathname: "/homes/home-3",
