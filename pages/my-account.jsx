@@ -12,7 +12,7 @@ const MyAccountScreen = () => {
             phone: phone,
             password: password,
         };
-        Axios.post("https://54.89.60.0:5000/register", userDetails).then(
+        Axios.post("http://54.89.60.0:5000/register", userDetails).then(
             (res) => {
                 login();
             }
@@ -23,15 +23,13 @@ const MyAccountScreen = () => {
             email: username,
             password: password,
         };
-        Axios.post("https://54.89.60.0:5000/login", loginDetails).then(
-            (res) => {
-                let result = res.data[0];
-                router.push({
-                    pathname: "/homes/home-3",
-                });
-                localStorage.setItem("user", JSON.stringify(result));
-            }
-        );
+        Axios.post("http://54.89.60.0:5000/login", loginDetails).then((res) => {
+            let result = res.data[0];
+            router.push({
+                pathname: "/homes/home-3",
+            });
+            localStorage.setItem("user", JSON.stringify(result));
+        });
     }
     const [username, setUsername] = useState("");
     const [first_name, setFirstName] = useState("");

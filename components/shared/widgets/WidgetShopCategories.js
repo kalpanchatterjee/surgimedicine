@@ -23,11 +23,9 @@ const WidgetShopCategories = () => {
 
     useEffect(() => {
         // getCatgories();
-        Axios.get("https://54.89.60.0:5000/category/getCategory").then(
-            (res) => {
-                setCategories(res.data);
-            }
-        );
+        Axios.get("http://54.89.60.0:5000/category/getCategory").then((res) => {
+            setCategories(res.data);
+        });
     }, []);
 
     // Views
