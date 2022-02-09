@@ -13,7 +13,7 @@ class MyDocument extends Document {
                 <Head>
                     <meta
                         http-equiv="Content-Security-Policy"
-                        content="none"></meta>
+                        content="default-src 'self' *"></meta>
                 </Head>
                 <body>
                     <Main />
