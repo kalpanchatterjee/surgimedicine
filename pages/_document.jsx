@@ -11,9 +11,9 @@ class MyDocument extends Document {
         return (
             <Html lang="en">
                 <Head>
-                    <meta
+                    {/* <meta
                         http-equiv="Content-Security-Policy"
-                        content="default-src 'self' *"></meta>
+                        content="default-src 'self' *"></meta> */}
                 </Head>
                 <body>
                     <Main />
