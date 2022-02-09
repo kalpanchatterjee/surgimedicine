@@ -14,7 +14,7 @@ import HomeOnePromotionsTwo from "~/components/partials/homepages/home-1/HomeOne
 import Testimonials from "~/components/shared/sections/Testimonials";
 import HeaderDefault from "~/components/shared/headers/HeaderDefault";
 import { useRouter } from "next/router";
-import { Context } from "../context";
+// import { Context } from "../context";
 const HomeDefaultPage = () => {
     const router = useRouter();
     useEffect(() => {
