@@ -23,7 +23,7 @@ const WidgetShopCategories = () => {
 
     useEffect(() => {
         // getCatgories();
-        Axios.get("54.89.60.0:5000/category/getCategory").then((res) => {
+        Axios.get("http://54.89.60.0:5000/category/getCategory").then((res) => {
             setCategories(res.data);
         });
     }, []);

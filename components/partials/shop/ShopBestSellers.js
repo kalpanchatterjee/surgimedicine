@@ -38,7 +38,7 @@ const ShopBestSellers = ({ collectionSlug }) => {
     // }, [collectionSlug]);
 
     useEffect(() => {
-        Axios.get(`54.89.60.0:5000/product/getProducts`)
+        Axios.get(`http://54.89.60.0:5000/product/getProducts`)
             .then((res) => {
                 data = res.data;
             })
