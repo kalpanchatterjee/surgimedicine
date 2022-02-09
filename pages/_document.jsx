@@ -13,7 +13,7 @@ class MyDocument extends Document {
                 <Head>
                     <meta
                         http-equiv="Content-Security-Policy"
-                        content="upgrade-insecure-requests"></meta>
+                        content="none"></meta>
                 </Head>
                 <body>
                     <Main />
