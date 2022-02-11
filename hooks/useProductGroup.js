@@ -58,7 +58,7 @@ export default function useProductGroup() {
             if (!loading) {
                 if (source && source.length > 0) {
                     const items = source.map((item) => (
-                        <div className="ps-layout__item" key={item.id}>
+                        <div className="ps-layout__item" key={item.product_id}>
                             <Product product={item} />
                         </div>
                     ));
