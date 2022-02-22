@@ -28,13 +28,19 @@ const WidgetShopCategories = () => {
         });
     }, []);
 
+    const goToSeeMore = (id) => {
+        router.push({
+            pathname: "/showMoreProduct",
+            query: { category_id: id },
+        });
+    };
     // Views
     let categoriesView;
     if (!loading) {
         if (categories && categories.length > 0) {
             categoriesView = categories.map((item) => (
                 <li key={item.category_id}>
-                    <Link href={`/category/${item.category_id}`}>
+                    {/* <Link href={`/category/${item.category_id}`}>
                         <a
                             // className={`ps-link--line ${
                             //     slug && slug === item.slug ? "active" : ""
@@ -42,7 +48,10 @@ const WidgetShopCategories = () => {
                             className="active">
                             {item.category_name}
                         </a>
-                    </Link>
+                    </Link> */}
+                    <div onClick={() => goToSeeMore(item.category_id)}>
+                        <a className="active">{item.category_name}</a>
+                    </div>
                 </li>
             ));
         } else {

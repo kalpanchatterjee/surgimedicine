@@ -4,6 +4,7 @@ import Lightbox from "react-image-lightbox";
 import { baseUrl } from "~/repositories/Repository";
 import NextArrow from "~/components/elements/carousel/NextArrow";
 import PrevArrow from "~/components/elements/carousel/PrevArrow";
+import Axios from "axios";
 const variantSetting = {
     slidesToShow: 6,
     responsive: [
@@ -40,7 +41,7 @@ const gallerySetting = {
     prevArrow: <PrevArrow />,
 };
 
-const ModuleDetailThumbnail = ({ product, vertical = true }) => {
+const ModuleDetailThumbnail = ({ product, vertical = true, detailProduct }) => {
     const galleryCarousel = useRef(null);
     const variantCarousel = useRef(null);
     const [gallery, setGallery] = useState(null);
@@ -48,6 +49,7 @@ const ModuleDetailThumbnail = ({ product, vertical = true }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [photoIndex, setPhotoIndex] = useState(0);
     const [productImages, setProductImages] = useState([]);
+    const [productImagesdb, setProductImagesdb] = useState([]);
 
     const handleOpenLightbox = (e, imageIndex) => {
         e.preventDefault();
@@ -56,16 +58,23 @@ const ModuleDetailThumbnail = ({ product, vertical = true }) => {
     };
 
     useEffect(() => {
+        Axios.get(
+            `http://54.89.60.0:5000/product/getImagesofProduct/${detailProduct[0].product_id}`
+        ).then((res) => {
+            setProductImagesdb(res.data);
+        });
         let images = [];
-        if (product && product.images.length > 0) {
-            product.images.map((item) => {
-                images.push(`${baseUrl}${item.url}`);
+        if (productImagesdb && productImagesdb.length > 0) {
+            productImagesdb.map((item) => {
+                images.push(
+                    `http://54.89.60.0:5000/product/getProductImages/${item.product_image_name}`
+                );
             });
             setProductImages(images);
         }
         setGallery(galleryCarousel.current);
         setVariant(variantCarousel.current);
-    }, [product]);
+    }, [productImagesdb]);
 
     //Views
     let lightboxView, variantCarouselView, imagesView, galleryImagesView;
@@ -75,6 +84,7 @@ const ModuleDetailThumbnail = ({ product, vertical = true }) => {
                 <img src={item} alt={item} />
             </div>
         ));
+
         galleryImagesView = productImages.map((item, index) => (
             <div className="item" key={item}>
                 <a href="#" onClick={(e) => handleOpenLightbox(e, index)}>

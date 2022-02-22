@@ -28,7 +28,10 @@ const DetailDefault = ({ product, detailProduct, status = "in-stock" }) => {
     return (
         <div className="product--detail ps-product--detail">
             <div className="ps-product__header">
-                <ModuleDetailThumbnail product={product} />
+                <ModuleDetailThumbnail
+                    product={product}
+                    detailProduct={detailProduct}
+                />
 
                 <div className="ps-product__info">
                     {statusView}

@@ -18,7 +18,7 @@ const ShowMoreProduct = () => {
             limit: 10,
         };
         Axios.post(
-            `http://localhost:5000/product/getProductsByCategory/${category_id}`,
+            `http://54.89.60.0:5000/product/getProductsByCategory/${category_id}`,
             fetchCount
         ).then((res) => {
             //products = withGrid(res.data, false, 4);

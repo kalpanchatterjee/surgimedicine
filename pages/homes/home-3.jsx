@@ -22,14 +22,14 @@ const HomeDefaultPage = () => {
             footer={<FooterThree />}>
             <main id="homepage-three">
                 <HomeThreeTopBanners />
-                <PopularCategoriesThree />
-                <HomeThreeWeekDeal />
+                {/* <PopularCategoriesThree /> */}
+                {/* <HomeThreeWeekDeal /> */}
                 <HomeThreeLastOffers />
-                <TopSellers />
+                {/* <TopSellers /> */}
                 <div className="container">
                     <PromotionSecureInformation />
                 </div>
-                <FeaturedProducts />
+                {/* <FeaturedProducts /> */}
                 <BannerPromotionTwo />
             </main>
         </Container>
