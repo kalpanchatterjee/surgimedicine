@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { FiUpload } from "react-icons/fi";
+import { useRouter } from "next/router";
+import Router from "next/router";
 const AddProduct = (props) => {
+    const router = useRouter();
     const [product_name, setProductName] = useState("");
     const [product_desc, setProductDescription] = useState("");
     const [category_id, setCategoryId] = useState(0);
@@ -17,14 +20,12 @@ const AddProduct = (props) => {
         formdata.append("image", e.target.files[0]);
         Axios.post(`http://54.89.60.0:5000/product/uploadImage`, formdata).then(
             (res) => {
-                alert(res.data);
                 image_ids = image_ids + res.data + ",";
             }
         );
     };
 
     const addProduct = () => {
-        alert(image_ids);
         let productDetails = {
             product_name: product_name,
             product_desc: product_desc,
@@ -32,12 +33,14 @@ const AddProduct = (props) => {
             category_id: category_id,
             product_image_id: image_ids,
         };
-        Axios.post(
-            `http://54.89.60.0:5000/product/addProduct`,
-            productDetails
-        ).then((res) => {
-            alert(res.data);
-        });
+        Axios.post(`http://54.89.60.0:5000/product/addProduct`, productDetails)
+            .then((res) => {
+                alert(res.data);
+            })
+            .then(() => {
+                Router.reload();
+            });
+
         image_ids = "";
     };
     useEffect(() => {

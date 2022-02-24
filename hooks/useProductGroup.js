@@ -22,6 +22,25 @@ export default function useProductGroup() {
             let carousel;
             if (!loading) {
                 if (source && source.length > 0) {
+                    const uniques = [
+                        ...new Set(
+                            source.map((x) =>
+                                JSON.stringify(
+                                    ((o) => ({
+                                        product_id: o.product_id,
+                                        category_id: o.category_id,
+                                        category_name: o.category_name,
+                                        image_name: o.image_name,
+                                        price: o.price,
+                                        product_desc: o.image_name,
+                                        product_name: o.product_name,
+                                    }))(x)
+                                )
+                            )
+                        ),
+                    ].map(JSON.parse);
+                    console.log("uniques", uniques);
+                    source = uniques;
                     const items = source.map((item) => {
                         return (
                             <SwiperSlide key={item.product_id}>

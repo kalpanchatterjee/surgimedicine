@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import Router from "next/router";
 const AddCategory = (props) => {
     const [categoryName, setCategoryName] = useState("");
     const [categoryDesc, setCategoryDesc] = useState("");
@@ -11,9 +12,13 @@ const AddCategory = (props) => {
         Axios.post(
             "http://54.89.60.0:5000/category/addCategory",
             categoryDetails
-        ).then((res) => {
-            alert(res.data);
-        });
+        )
+            .then((res) => {
+                alert(res.data);
+            })
+            .then(() => {
+                Router.reload();
+            });
     };
     return (
         <div

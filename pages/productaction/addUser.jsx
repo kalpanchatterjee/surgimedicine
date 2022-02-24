@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import Router from "next/router";
 const AddUser = (props) => {
     const [username, setUsername] = useState("");
     const [first_name, setFirstName] = useState("");
@@ -16,11 +17,13 @@ const AddUser = (props) => {
             password: password,
             role_id: 1,
         };
-        Axios.post("http://54.89.60.0:5000/register", userDetails).then(
-            (res) => {
+        Axios.post("http://54.89.60.0:5000/register", userDetails)
+            .then((res) => {
                 alert("user added as admin ;)");
-            }
-        );
+            })
+            .then(() => {
+                Router.reload();
+            });
     };
     return (
         <div
